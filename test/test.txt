@@ -1,0 +1,63 @@
+Thu Apr 22 12:49:42 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce RTX 208...  Off  | 00000000:1B:00.0 Off |                  N/A |
+| 25%   34C    P0    50W / 250W |      0MiB / 11019MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Your CPU supports instructions that this binary was not compiled to use: SSE3 SSE4.1 SSE4.2 AVX AVX2
+For maximum performance, you can install NMSLIB from sources 
+pip install --no-binary :all: nmslib
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfTransformer from version 0.20.3 when using version 0.24.1. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.1. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
+[
+Myeloid derived suppressor cells (MDSC) are immature 
+myeloid cells with immunosuppressive activity., 
+They accumulate in tumor-bearing mice and humans 
+with different types of cancer, including hepatocellular 
+carcinoma (HCC)., 
+]
+(Myeloid, suppressor cells, MDSC, immature, immunosuppressive activity, accumulate, tumor-bearing mice, humans, cancer, hepatocellular 
+carcinoma, HCC)
+Second Entity
+suppressor cells
+CUI: C0038856, Name: Suppressor T Lymphocyte
+Definition: subpopulation of CD8+ T-lymphocytes which suppress antibody production or inhibit cellular immune responses.
+TUI(s): T025
+Aliases: (total: 9): 
+	 t cell suppressor, suppressor cell, T suppressor cell, suppressor cells, Suppressor cell, suppressor T lymphocyte, cells suppressor t, Suppressor cells, Suppressor cell (cell)
+CUI: C1710252, Name: Suppressor Device
+Definition: An electrical device designed to reduce or eliminate unwanted currents.
+TUI(s): T073
+Aliases: (total: 2): 
+	 Suppressor, Suppressor Device
+CUI: C1267822, Name: CD4+ CD25+ Regulatory T Cells
+Definition: Regulatory T cells that express CD4 and CD25 (interleukin 2 receptor) antigens, with immunomodulating activity. CD4+CD25+ T regulatory cells (Tregs), a subset of CD4+ T cells expressing high levels of CD25 and the transcription factor Foxp3, are essential in maintaining immunologic homeostasis, preventing autoimmunity by suppressing self-reactive T cells; CD4+CD25+ Tregs may induce tolerance to allogeneic organ transplants such as hematopoetic stem cell transplants (HSCTs).
+TUI(s): T025
+Aliases (abbreviated, total: 12): 
+	 nTregs, CD4+CD25+ regulatory T cells, T-regulatory cell, CD4+CD25+ T lymphocyte, Tr cell, regulatory T cell, CD4+CD25+ T Lymphocyte, T reg, suppressor T cell, CD4+ CD25+ Regulatory T Cells
+CUI: C2355611, Name: Suppressor effector T lymphocyte
+Definition: T-lymphocytes that respond to signals from suppressor-inducer T-cells by inhibiting either cell-mediated immunity or antibody production by B-cells.
+TUI(s): T025
+Aliases: (total: 6): 
+	 Suppressor-Effector T-Lymphocyte, Suppressor effector T lymphocyte, T Suppressor Cell, Suppressor T Lymphocyte, Suppressor-Effector T-Cells, Suppressor-Effector T-Lymphocytes
+Total_Time (0.08741764234171974in hrs:5.245058564345042in miuntes)
