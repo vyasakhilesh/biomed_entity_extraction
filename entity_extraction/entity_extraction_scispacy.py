@@ -7,10 +7,12 @@ import pickle
 
 spacy.require_gpu()
 nlp = spacy.load("en_core_sci_lg")
-nlp.add_pipe("scispacy_linker", config={"resolve_abbreviations": True, "linker_name": "umls"})
+nlp.add_pipe("scispacy_linker", config={"k":30,"resolve_abbreviations": True, "linker_name": "umls", 
+                "filter_for_definitions":False, "threshold":0.7})
 linker = nlp.get_pipe("scispacy_linker")
 
 def text_entity_score(text):
+    text = str(text)
     doc = nlp(text)
     # print(list(doc.sents))
     # print(doc.ents)
@@ -33,8 +35,14 @@ def text_entity_score(text):
     return umls_l
 
 def extracts_entity(text):
+    text = str(text)
     doc = nlp(text)
     return doc.ents
+
+def extracts_entity_len(text):
+    text = str(text)
+    doc = nlp(text)
+    return len(doc.ents)
 
 
 
@@ -54,14 +62,16 @@ def main():
     with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_ent_score.pkl','wb') as f:
         pickle.dump(df_train['replacement_deepl'].apply(text_entity_score), f)
 
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_ent.pkl','wb') as f:
-        pickle.dump(df_train['replacement'].apply(extracts_entity), f)
-    
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_google_ent.pkl','wb') as f:
-        pickle.dump(df_train['replacement_google'].apply(extracts_entity), f)
+    df_train['replacement_ents'] = df_train['replacement'].apply(extracts_entity)
+    df_train['replacement_google_ents'] = df_train['replacement_google'].apply(extracts_entity)
+    df_train['replacement_deepl_ents'] = df_train['replacement_deepl'].apply(extracts_entity)
 
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_ent.pkl','wb') as f:
-        pickle.dump(df_train['replacement_deepl'].apply(extracts_entity), f)
+    df_train['replacement_ents_len'] = df_train['replacement'].apply(extracts_entity_len)
+    df_train['replacement_google_ents_len'] = df_train['replacement_google'].apply(extracts_entity_len)
+    df_train['replacement_deepl_ents_len'] = df_train['replacement_deepl'].apply(extracts_entity_len)
+
+
+    df_train = df_train.to_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV_ents.csv', encoding='utf-8', index=False)
 
 
 if __name__ == "__main__":

@@ -2,6 +2,9 @@
 import pickle
 import pandas as pd
 import time
+import numpy as np
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
 
 def jaccard_similarity(l1, l2):
     s1 = set(l1)
@@ -11,7 +14,7 @@ def jaccard_similarity(l1, l2):
     try:
         return intersection / float(union)
     except:
-        return 1.0
+        return np.nan
 
 def jaccard_arr(arr1, arr2):
     score_l = []
@@ -37,18 +40,33 @@ def jaccard_arr_flat(arr1, arr2, top=5):
         e1_l = [cui for i in t1_l for cui, _ in i]
         e2_l = [cui for i in t2_l for cui, _ in i]
         score = jaccard_similarity(e1_l, e2_l)
-        print (t1_l)
-        print (e1_l)
-        print (t2_l)
-        print (e2_l)
-        print(score)
+        score_l.append(score)
+    return score_l
+
+
+
+def precision_arr_flat(arr1, arr2, top=5):
+    score_l = []
+    for t1_l, t2_l in zip(arr1, arr2):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        score = precision_score(e1_l, e2_l, average='macro')
+        score_l.append(score)
+    return score_l
+
+def recall_arr_flat(arr1, arr2, top=5):
+    score_l = []
+    for t1_l, t2_l in zip(arr1, arr2):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        score = recall_score(e1_l, e2_l, average='macro')
         score_l.append(score)
     return score_l
 
 
 
 def main():
-    df_train = pd.read_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV.csv', encoding='utf-8')
+    df_train = pd.read_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV_ents.csv', encoding='utf-8')
     print (df_train.head(5))
     print ("DataFrame Size", df_train.shape)
     
@@ -63,11 +81,33 @@ def main():
     
     # jaccard_arr(mev_arr, google_arr)
     # jaccard_arr(mev_arr, deepl_arr)
-    df_train['Avg_JD_MEV_google'] = jaccard_arr_flat(mev_arr, google_arr)
-    df_train['Avg_JD_MEV_deepl'] = jaccard_arr_flat(mev_arr, deepl_arr)
+
+    df_train['mev_cui_score'] = mev_arr
+    df_train['google_cui_score'] = google_arr
+    df_train['deepl_cui_score'] = deepl_arr
+
+
+    df_train['mev_cui_len'] = df_train['mev_cui_score'].apply(lambda x: sum([len(element) for element in x]))
+    df_train['google_cui_len'] = df_train['google_cui_score'].apply(lambda x: sum([len(element) for element in x]))
+    df_train['deepl_cui_len'] = df_train['deepl_cui_score'].apply(lambda x: sum([len(element) for element in x]))
+
+
+    df_train['cui_jacD_mev_google'] = jaccard_arr_flat(mev_arr, google_arr)
+    df_train['cui_jacD_mev_deepl'] = jaccard_arr_flat(mev_arr, deepl_arr)
+
+
+    """df_train['macro_pre_cui_mev_google'] = precision_arr_flat(mev_arr, google_arr)
+    df_train['macro_pre_cui_mev_deepl'] = precision_arr_flat(mev_arr, deepl_arr)
+    df_train['macro_rec_cui_mev_google'] = recall_arr_flat(mev_arr, google_arr)
+    df_train['macro_rec_cui_mev_deepl'] = recall_arr_flat(mev_arr, deepl_arr)"""
+
+
+
 
     print (df_train.head(5))
     print (df_train.tail(5))
+
+    df_train = df_train.to_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV_ents_jaccard.csv', encoding='utf-8', index=False)
 
 if __name__ == "__main__":
     past_time = time.time()
