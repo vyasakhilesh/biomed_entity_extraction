@@ -62,6 +62,13 @@ def main():
     with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_ent_score.pkl','wb') as f:
         pickle.dump(df_train['replacement_deepl'].apply(text_entity_score), f)
 
+    
+    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_google_withst_num_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['replacement_google_withst_num'].apply(text_entity_score), f)
+
+    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_withst_num_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['replacement_deepl_withst_num'].apply(text_entity_score), f)
+
     df_train['replacement_ents'] = df_train['replacement'].apply(extracts_entity)
     df_train['replacement_google_ents'] = df_train['replacement_google'].apply(extracts_entity)
     df_train['replacement_deepl_ents'] = df_train['replacement_deepl'].apply(extracts_entity)

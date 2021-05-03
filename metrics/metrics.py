@@ -79,6 +79,13 @@ def main():
     with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_ent_score.pkl','rb') as f:
         deepl_arr = pickle.load(f)
     
+    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_google_withst_num_ent_score.pkl','rb') as f:
+        google_withst_num_arr = pickle.load(f)
+
+    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_withst_num_ent_score.pkl','rb') as f:
+        deepl_withst_num_arr = pickle.load(f)
+
+
     # jaccard_arr(mev_arr, google_arr)
     # jaccard_arr(mev_arr, deepl_arr)
 
@@ -95,13 +102,14 @@ def main():
     df_train['cui_jacD_mev_google'] = jaccard_arr_flat(mev_arr, google_arr)
     df_train['cui_jacD_mev_deepl'] = jaccard_arr_flat(mev_arr, deepl_arr)
 
+    df_train['cui_jacD_mev_google_withst_num'] = jaccard_arr_flat(mev_arr, google_withst_num_arr)
+    df_train['cui_jacD_mev_deepl_withst_num'] = jaccard_arr_flat(mev_arr, deepl_withst_num_arr)
+
 
     """df_train['macro_pre_cui_mev_google'] = precision_arr_flat(mev_arr, google_arr)
     df_train['macro_pre_cui_mev_deepl'] = precision_arr_flat(mev_arr, deepl_arr)
     df_train['macro_rec_cui_mev_google'] = recall_arr_flat(mev_arr, google_arr)
     df_train['macro_rec_cui_mev_deepl'] = recall_arr_flat(mev_arr, deepl_arr)"""
-
-
 
 
     print (df_train.head(5))
