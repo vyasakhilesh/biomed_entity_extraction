@@ -16,6 +16,16 @@ def jaccard_similarity(l1, l2):
     except:
         return np.nan
 
+def jaccard_similarity_A(l1, l2):
+    s1 = set(l1)
+    s2 = set(l2)
+    intersection = len(s1.intersection(s2))
+    union = len(s1)
+    try:
+        return intersection / float(union)
+    except:
+        return np.nan
+
 def jaccard_arr(arr1, arr2):
     score_l = []
     for t1_l, t2_l in zip(arr1, arr2):
@@ -40,6 +50,16 @@ def jaccard_arr_flat(arr1, arr2, top=5):
         e1_l = [cui for i in t1_l for cui, _ in i]
         e2_l = [cui for i in t2_l for cui, _ in i]
         score = jaccard_similarity(e1_l, e2_l)
+        score_l.append(score)
+    return score_l
+
+
+def jaccard_arr_flat_A(arr1, arr2, top=5):
+    score_l = []
+    for t1_l, t2_l in zip(arr1, arr2):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        score = jaccard_similarity_A(e1_l, e2_l)
         score_l.append(score)
     return score_l
 
@@ -104,6 +124,12 @@ def main():
 
     df_train['cui_jacD_mev_google_withst_num'] = jaccard_arr_flat(mev_arr, google_withst_num_arr)
     df_train['cui_jacD_mev_deepl_withst_num'] = jaccard_arr_flat(mev_arr, deepl_withst_num_arr)
+
+    df_train['cui_jacD_mev_google_A'] = jaccard_arr_flat_A(mev_arr, google_arr)
+    df_train['cui_jacD_mev_deepl_A'] = jaccard_arr_flat_A(mev_arr, deepl_arr)
+
+    df_train['cui_jacD_mev_google_withst_num_A'] = jaccard_arr_flat_A(mev_arr, google_withst_num_arr)
+    df_train['cui_jacD_mev_deepl_withst_num_A'] = jaccard_arr_flat_A(mev_arr, deepl_withst_num_arr)
 
 
     """df_train['macro_pre_cui_mev_google'] = precision_arr_flat(mev_arr, google_arr)
