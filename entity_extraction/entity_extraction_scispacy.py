@@ -48,37 +48,56 @@ def extracts_entity_len(text):
 
 
 def main():
-    
-    df_train = pd.read_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV.csv', encoding='utf-8')
+    path = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/'
+    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output/'
+    df_train = pd.read_csv(path+'train_MEV.csv', encoding='utf-8')
     print (df_train.head(5))
     print ("DataFrame Size", df_train.shape)
     
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_ent_score.pkl','wb') as f:
+    with open(path_output+'ent_score.pkl','wb') as f:
         pickle.dump(df_train['replacement'].apply(text_entity_score), f)
     
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_google_ent_score.pkl','wb') as f:
-        pickle.dump(df_train['replacement_google'].apply(text_entity_score), f)
+    with open(path_output+'google_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['google'].apply(text_entity_score), f)
 
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_ent_score.pkl','wb') as f:
-        pickle.dump(df_train['replacement_deepl'].apply(text_entity_score), f)
+    with open(path_output+'deepl_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['deepl'].apply(text_entity_score), f)
+
+     
+    with open(path_output+'google_abbr_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['google_abbr'].apply(text_entity_score), f)
+
+    with open(path_output+'deepl_abbr_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['deepl_abbr'].apply(text_entity_score), f)
 
     
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_google_withst_num_ent_score.pkl','wb') as f:
-        pickle.dump(df_train['replacement_google_withst_num'].apply(text_entity_score), f)
+    with open(path_output+'google_withst_num_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['google_withst_num'].apply(text_entity_score), f)
 
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_withst_num_ent_score.pkl','wb') as f:
-        pickle.dump(df_train['replacement_deepl_withst_num'].apply(text_entity_score), f)
+    with open(path_output+'deepl_withst_num_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['deepl_withst_num'].apply(text_entity_score), f)
 
-    df_train['replacement_ents'] = df_train['replacement'].apply(extracts_entity)
-    df_train['replacement_google_ents'] = df_train['replacement_google'].apply(extracts_entity)
-    df_train['replacement_deepl_ents'] = df_train['replacement_deepl'].apply(extracts_entity)
+    with open(path_output+'google_abbr_withst_num_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['google_abbr_withst_num'].apply(text_entity_score), f)
 
-    df_train['replacement_ents_len'] = df_train['replacement'].apply(extracts_entity_len)
-    df_train['replacement_google_ents_len'] = df_train['replacement_google'].apply(extracts_entity_len)
-    df_train['replacement_deepl_ents_len'] = df_train['replacement_deepl'].apply(extracts_entity_len)
+    with open(path_output+'deepl_abbr_withst_num_ent_score.pkl','wb') as f:
+        pickle.dump(df_train['deepl_abbr_withst_num'].apply(text_entity_score), f)
+
+    df_train['ents'] = df_train['replacement'].apply(extracts_entity)
+    df_train['google_ents'] = df_train['google'].apply(extracts_entity)
+    df_train['deepl_ents'] = df_train['deepl'].apply(extracts_entity)
+
+    df_train['google_abbr_ents'] = df_train['google_abbr'].apply(extracts_entity)
+    df_train['deepl_abbr_ents'] = df_train['deepl_abbr'].apply(extracts_entity)
+
+    df_train['ents_len'] = df_train['replacement'].apply(extracts_entity_len)
+    df_train['google_ents_len'] = df_train['google'].apply(extracts_entity_len)
+    df_train['deepl_ents_len'] = df_train['deepl'].apply(extracts_entity_len)
+    df_train['google_abbr_ents_len'] = df_train['google_abbr'].apply(extracts_entity_len)
+    df_train['deepl_abbr_ents_len'] = df_train['deepl_abbr'].apply(extracts_entity_len)
 
 
-    df_train = df_train.to_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV_ents.csv', encoding='utf-8', index=False)
+    df_train = df_train.to_csv(path+'train_MEV_ents.csv', encoding='utf-8', index=False)
 
 
 if __name__ == "__main__":

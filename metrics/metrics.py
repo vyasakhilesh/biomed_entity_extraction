@@ -86,24 +86,40 @@ def recall_arr_flat(arr1, arr2, top=5):
 
 
 def main():
-    df_train = pd.read_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV_ents.csv', encoding='utf-8')
+
+    path = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/'
+    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output/'
+
+    df_train = pd.read_csv(path+'train_MEV_ents.csv', encoding='utf-8')
     print (df_train.head(5))
     print ("DataFrame Size", df_train.shape)
     
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_ent_score.pkl','rb') as f:
+    with open(path_output+'ent_score.pkl','rb') as f:
         mev_arr = pickle.load(f)
     
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_google_ent_score.pkl','rb') as f:
+    with open(path_output+'google_ent_score.pkl','rb') as f:
         google_arr = pickle.load(f)
 
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_ent_score.pkl','rb') as f:
+    with open(path_output+'deepl_ent_score.pkl','rb') as f:
         deepl_arr = pickle.load(f)
     
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_google_withst_num_ent_score.pkl','rb') as f:
+    with open(path_output+'google_withst_num_ent_score.pkl','rb') as f:
         google_withst_num_arr = pickle.load(f)
 
-    with open('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/replacement_deepl_withst_num_ent_score.pkl','rb') as f:
+    with open(path_output+'deepl_withst_num_ent_score.pkl','rb') as f:
         deepl_withst_num_arr = pickle.load(f)
+
+    with open(path_output+'google_abbr_ent_score.pkl','rb') as f:
+        google_abbr_arr = pickle.load(f)
+
+    with open(path_output+'deepl_abbr_ent_score.pkl','rb') as f:
+        deepl_abbr_arr = pickle.load(f)
+    
+    with open(path_output+'google_abbr_withst_num_ent_score.pkl','rb') as f:
+        google_abbr_withst_num_arr = pickle.load(f)
+
+    with open(path_output+'deepl_abbr_withst_num_ent_score.pkl','rb') as f:
+        deepl_abbr_withst_num_arr = pickle.load(f)
 
 
     # jaccard_arr(mev_arr, google_arr)
@@ -112,11 +128,15 @@ def main():
     df_train['mev_cui_score'] = mev_arr
     df_train['google_cui_score'] = google_arr
     df_train['deepl_cui_score'] = deepl_arr
+    df_train['google_abbr_cui_score'] = google_abbr_arr
+    df_train['deepl_abbr_cui_score'] = deepl_abbr_arr
 
 
     df_train['mev_cui_len'] = df_train['mev_cui_score'].apply(lambda x: sum([len(element) for element in x]))
     df_train['google_cui_len'] = df_train['google_cui_score'].apply(lambda x: sum([len(element) for element in x]))
     df_train['deepl_cui_len'] = df_train['deepl_cui_score'].apply(lambda x: sum([len(element) for element in x]))
+    df_train['google_abbr_cui_len'] = df_train['google_abbr_cui_score'].apply(lambda x: sum([len(element) for element in x]))
+    df_train['deepl_abbr_cui_len'] = df_train['deepl_abbr_cui_score'].apply(lambda x: sum([len(element) for element in x]))
 
 
     df_train['cui_jacD_mev_google'] = jaccard_arr_flat(mev_arr, google_arr)
@@ -131,6 +151,18 @@ def main():
     df_train['cui_jacD_mev_google_withst_num_A'] = jaccard_arr_flat_A(mev_arr, google_withst_num_arr)
     df_train['cui_jacD_mev_deepl_withst_num_A'] = jaccard_arr_flat_A(mev_arr, deepl_withst_num_arr)
 
+    df_train['cui_jacD_mev_google_abbr'] = jaccard_arr_flat(mev_arr, google_abbr_arr)
+    df_train['cui_jacD_mev_deepl_abbr'] = jaccard_arr_flat(mev_arr, deepl_abbr_arr)
+
+    df_train['cui_jacD_mev_google_abbr_withst_num'] = jaccard_arr_flat(mev_arr, google_abbr_withst_num_arr)
+    df_train['cui_jacD_mev_deepl_abbr_withst_num'] = jaccard_arr_flat(mev_arr, deepl_abbr_withst_num_arr)
+
+    df_train['cui_jacD_mev_google_abbr_A'] = jaccard_arr_flat_A(mev_arr, google_abbr_arr)
+    df_train['cui_jacD_mev_deepl_abbr_A'] = jaccard_arr_flat_A(mev_arr, deepl_abbr_arr)
+
+    df_train['cui_jacD_mev_google_abbr_withst_num_A'] = jaccard_arr_flat_A(mev_arr, google_abbr_withst_num_arr)
+    df_train['cui_jacD_mev_deepl_abbr_withst_num_A'] = jaccard_arr_flat_A(mev_arr, deepl_abbr_withst_num_arr)
+
 
     """df_train['macro_pre_cui_mev_google'] = precision_arr_flat(mev_arr, google_arr)
     df_train['macro_pre_cui_mev_deepl'] = precision_arr_flat(mev_arr, deepl_arr)
@@ -141,7 +173,7 @@ def main():
     print (df_train.head(5))
     print (df_train.tail(5))
 
-    df_train = df_train.to_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/train_MEV_ents_jaccard.csv', encoding='utf-8', index=False)
+    df_train = df_train.to_csv(path_output+'train_MEV_ents_jaccard.csv', encoding='utf-8', index=False)
 
 if __name__ == "__main__":
     past_time = time.time()
