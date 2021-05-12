@@ -18,14 +18,6 @@ def parse_spanish_abbr(file):
     return df_new
 
 
-def capitalize_(text):
-    if type(text)==str:
-        if len(text)>0:
-            return text[0:1].capitalize()+text[1:].lower()
-    else:
-        return text
-
-
 def sp_text_wtht_abbr(df_new):
     df = pd.read_csv('/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/old_10_05_2021/comorbidities_modified.csv', 
          sep=',', error_bad_lines=True, encoding='utf-8')

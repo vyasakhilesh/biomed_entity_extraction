@@ -1,4 +1,4 @@
-Tue May 11 18:15:56 2021       
+Wed May 12 19:17:57 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -7,7 +7,7 @@ Tue May 11 18:15:56 2021
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
 |   0  GeForce RTX 208...  On   | 00000000:1B:00.0 Off |                  N/A |
-| 27%   26C    P8     3W / 250W |      1MiB / 11019MiB |      0%      Default |
+| 27%   27C    P8     3W / 250W |      1MiB / 11019MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -32,30 +32,30 @@ pip install --no-binary :all: nmslib
 3            intervenido pÛlipo colon  ...                         0
 4         intervenido estenosis aorta  ...                         0
 
-[5 rows x 16 columns]
-DataFrame Size (882, 16)
+[5 rows x 17 columns]
+DataFrame Size (882, 17)
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
-Total_Time (0.06803758482138315(in Hrs) : 4.082255121072134(in Mins)
+Total_Time (0.07156541837586297(in Hrs) : 4.293925134340922(in Mins)
                                 value  ... deepl_abbr_ents_len
 0                   Gastritis crÛnica  ...                   1
 1  Sarcoma PleomÛrfico Pectoral Mayor  ...                   2
 2                       hiperuricemia  ...                   1
-3            intervenido pÛlipo colon  ...                   1
+3            intervenido pÛlipo colon  ...                   2
 4         intervenido estenosis aorta  ...                   1
 
-[5 rows x 26 columns]
-DataFrame Size (882, 26)
+[5 rows x 27 columns]
+DataFrame Size (882, 27)
                                 value  ... cui_jacD_mev_deepl_abbr_withst_num_A
-0                   Gastritis crÛnica  ...                                  1.0
-1  Sarcoma PleomÛrfico Pectoral Mayor  ...                                  0.5
-2                       hiperuricemia  ...                                  1.0
-3            intervenido pÛlipo colon  ...                                  0.0
-4         intervenido estenosis aorta  ...                                  0.2
+0                   Gastritis crÛnica  ...                             1.000000
+1  Sarcoma PleomÛrfico Pectoral Mayor  ...                             0.500000
+2                       hiperuricemia  ...                             1.000000
+3            intervenido pÛlipo colon  ...                             0.000000
+4         intervenido estenosis aorta  ...                             0.166667
 
-[5 rows x 52 columns]
+[5 rows x 53 columns]
                                     value  ... cui_jacD_mev_deepl_abbr_withst_num_A
 877             Trombioembolismo pulmonar  ...                                  0.2
 878                  Ictus lacunar (2006)  ...                                  0.0
@@ -63,5 +63,5 @@ DataFrame Size (882, 26)
 880              Trombopenia probable SMD  ...                                  0.0
 881  Trombosis central de retina bilteral  ...                                  0.0
 
-[5 rows x 52 columns]
-Total_Time (9.73070330089993e-05(in Hrs) : 0.005838457743326823(in Mins)
+[5 rows x 53 columns]
+Total_Time (0.00013717644744449192(in Hrs) : 0.008230634530385335(in Mins)
