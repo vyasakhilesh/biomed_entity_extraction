@@ -1,4 +1,4 @@
-Wed May 12 19:17:57 2021       
+Tue May 18 12:49:07 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -6,8 +6,8 @@ Wed May 12 19:17:57 2021
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
-|   0  GeForce RTX 208...  On   | 00000000:1B:00.0 Off |                  N/A |
-| 27%   27C    P8     3W / 250W |      1MiB / 11019MiB |      0%      Default |
+|   0  GeForce RTX 208...  On   | 00000000:1C:00.0 Off |                  N/A |
+| 27%   30C    P8    22W / 250W |      1MiB / 11019MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -33,12 +33,12 @@ pip install --no-binary :all: nmslib
 4         intervenido estenosis aorta  ...                         0
 
 [5 rows x 17 columns]
-DataFrame Size (882, 17)
+DataFrame Size (1276, 17)
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
-Total_Time (0.07156541837586297(in Hrs) : 4.293925134340922(in Mins)
+Total_Time (0.10063140822781456(in Hrs) : 6.037884517510732(in Mins)
                                 value  ... deepl_abbr_ents_len
 0                   Gastritis crÛnica  ...                   1
 1  Sarcoma PleomÛrfico Pectoral Mayor  ...                   2
@@ -47,21 +47,21 @@ Total_Time (0.07156541837586297(in Hrs) : 4.293925134340922(in Mins)
 4         intervenido estenosis aorta  ...                   1
 
 [5 rows x 27 columns]
-DataFrame Size (882, 27)
-                                value  ... cui_jacD_mev_deepl_abbr_withst_num_A
-0                   Gastritis crÛnica  ...                             1.000000
-1  Sarcoma PleomÛrfico Pectoral Mayor  ...                             0.500000
-2                       hiperuricemia  ...                             1.000000
-3            intervenido pÛlipo colon  ...                             0.000000
-4         intervenido estenosis aorta  ...                             0.166667
+DataFrame Size (1276, 27)
+                                value  ... cui_jacD_mev_google_deepl_abbr_A
+0                   Gastritis crÛnica  ...                         1.000000
+1  Sarcoma PleomÛrfico Pectoral Mayor  ...                         0.500000
+2                       hiperuricemia  ...                         1.000000
+3            intervenido pÛlipo colon  ...                         0.000000
+4         intervenido estenosis aorta  ...                         0.166667
 
-[5 rows x 53 columns]
-                                    value  ... cui_jacD_mev_deepl_abbr_withst_num_A
-877             Trombioembolismo pulmonar  ...                                  0.2
-878                  Ictus lacunar (2006)  ...                                  0.0
-879                   vÈrtigos de meniere  ...                                  0.2
-880              Trombopenia probable SMD  ...                                  0.0
-881  Trombosis central de retina bilteral  ...                                  0.0
+[5 rows x 57 columns]
+                                                  value  ... cui_jacD_mev_google_deepl_abbr_A
+1271               Trombosis central de retina bilteral  ...                              0.0
+1272                  AIT SIN INFARTO CEREBRAL ASOCIADO  ...                              1.0
+1273  RTU por tumor vesical ( no A-P por muestra mÌn...  ...                              1.0
+1274                                        AIT en 2017  ...                              0.8
+1275     hepatopatia crÛnica con fibrosis e HTP por VHB  ...                              0.2
 
-[5 rows x 53 columns]
-Total_Time (0.00013717644744449192(in Hrs) : 0.008230634530385335(in Mins)
+[5 rows x 57 columns]
+Total_Time (0.00013577858606974284(in Hrs) : 0.00814676284790039(in Mins)

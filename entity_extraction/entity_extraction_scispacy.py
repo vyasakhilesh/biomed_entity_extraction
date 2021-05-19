@@ -11,7 +11,7 @@ nlp.add_pipe("scispacy_linker", config={"k":30,"resolve_abbreviations": True, "l
                 "filter_for_definitions":False, "threshold":0.7})
 linker = nlp.get_pipe("scispacy_linker")
 
-def text_entity_score(text):
+def text_entity_score(text, top=3):
     text = str(text)
     doc = nlp(text)
     # print(list(doc.sents))
@@ -26,13 +26,14 @@ def text_entity_score(text):
     # return [linker.kb.cui_to_entity[umls_ent] for ent in doc.ents for umls_ent in ent._.kb_ents]
     umls_l = []
     for ent in doc.ents:
-        umls_l.append([umls_ent for umls_ent in ent._.kb_ents])
+        umls_l.append([umls_ent for i, umls_ent in enumerate(ent._.kb_ents) if umls_ent[1]==1.0 or i<top])
     
     # for ent in doc.ents:
     #     for umls_ent in ent._.kb_ents:
     #         print(umls_ent, end=',')
     #     print('\n')
     return umls_l
+
 
 def extracts_entity(text):
     text = str(text)
@@ -43,7 +44,6 @@ def extracts_entity_len(text):
     text = str(text)
     doc = nlp(text)
     return len(doc.ents)
-
 
 
 
@@ -69,7 +69,9 @@ def main():
 
     with open(path_output+'deepl_abbr_ent_score.pkl','wb') as f:
         pickle.dump(df_train['deepl_abbr'].apply(text_entity_score), f)
+    
 
+    # Without Stop_words
     
     with open(path_output+'google_withst_num_ent_score.pkl','wb') as f:
         pickle.dump(df_train['google_withst_num'].apply(text_entity_score), f)

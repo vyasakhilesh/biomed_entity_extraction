@@ -44,7 +44,7 @@ def jaccard_arr(arr1, arr2):
         score_l.append(score)
     return score_l
 
-def jaccard_arr_flat(arr1, arr2, top=5):
+def jaccard_arr_flat(arr1, arr2):
     score_l = []
     for t1_l, t2_l in zip(arr1, arr2):
         e1_l = [cui for i in t1_l for cui, _ in i]
@@ -54,7 +54,7 @@ def jaccard_arr_flat(arr1, arr2, top=5):
     return score_l
 
 
-def jaccard_arr_flat_A(arr1, arr2, top=5):
+def jaccard_arr_flat_A(arr1, arr2):
     score_l = []
     for t1_l, t2_l in zip(arr1, arr2):
         e1_l = [cui for i in t1_l for cui, _ in i]
@@ -63,9 +63,53 @@ def jaccard_arr_flat_A(arr1, arr2, top=5):
         score_l.append(score)
     return score_l
 
+def jaccard_arr_flat_com(arr1, arr2, arr3):
+    score_l = []
+    for t1_l, t2_l, t3_l in zip(arr1, arr2, arr3):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        e3_l = [cui for i in t3_l for cui, _ in i]
+        e4_l = list(set(e2_l).intersection(set(e3_l)))
+        score = jaccard_similarity(e1_l, e4_l)
+        score_l.append(score)
+    return score_l
+
+def jaccard_arr_flat_com_A(arr1, arr2, arr3):
+    score_l = []
+    for t1_l, t2_l, t3_l in zip(arr1, arr2, arr3):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        e3_l = [cui for i in t3_l for cui, _ in i]
+        e4_l = list(set(e2_l).intersection(set(e3_l)))
+        score = jaccard_similarity_A(e1_l, e4_l)
+        score_l.append(score)
+    return score_l
+
+def jaccard_arr_flat_un(arr1, arr2, arr3):
+    score_l = []
+    for t1_l, t2_l, t3_l in zip(arr1, arr2, arr3):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        e3_l = [cui for i in t3_l for cui, _ in i]
+        e4_l = list(set(e2_l).union(set(e3_l)))
+        score = jaccard_similarity(e1_l, e4_l)
+        score_l.append(score)
+    return score_l
+
+def jaccard_arr_flat_un_A(arr1, arr2, arr3):
+    score_l = []
+    for t1_l, t2_l, t3_l in zip(arr1, arr2, arr3):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        e3_l = [cui for i in t3_l for cui, _ in i]
+        e4_l = list(set(e2_l).union(set(e3_l)))
+        score = jaccard_similarity_A(e1_l, e4_l)
+        score_l.append(score)
+    return score_l
 
 
-def precision_arr_flat(arr1, arr2, top=5):
+
+"""def precision_arr_flat(arr1, arr2, top=5):
     score_l = []
     for t1_l, t2_l in zip(arr1, arr2):
         e1_l = [cui for i in t1_l for cui, _ in i]
@@ -81,7 +125,7 @@ def recall_arr_flat(arr1, arr2, top=5):
         e2_l = [cui for i in t2_l for cui, _ in i]
         score = recall_score(e1_l, e2_l, average='macro')
         score_l.append(score)
-    return score_l
+    return score_l """
 
 
 
@@ -162,7 +206,18 @@ def main():
 
     df_train['cui_jacD_mev_google_abbr_withst_num_A'] = jaccard_arr_flat_A(mev_arr, google_abbr_withst_num_arr)
     df_train['cui_jacD_mev_deepl_abbr_withst_num_A'] = jaccard_arr_flat_A(mev_arr, deepl_abbr_withst_num_arr)
+    
+    # Only Top Common
+    df_train['cui_jacD_mev_google_deepl_com'] = jaccard_arr_flat_com(mev_arr, google_arr, deepl_arr)
+    df_train['cui_jacD_mev_google_deepl_com_A'] = jaccard_arr_flat_com_A(mev_arr, google_arr, deepl_arr)
+    df_train['cui_jacD_mev_google_deepl_abbr_com'] = jaccard_arr_flat_com(mev_arr, google_abbr_arr, deepl_abbr_arr)
+    df_train['cui_jacD_mev_google_deepl_abbr_com_A'] = jaccard_arr_flat_com_A(mev_arr, google_abbr_arr, deepl_abbr_arr)
 
+    # Only Top Union
+    df_train['cui_jacD_mev_google_deepl_un'] = jaccard_arr_flat_un(mev_arr, google_arr, deepl_arr)
+    df_train['cui_jacD_mev_google_deepl_un_A'] = jaccard_arr_flat_un_A(mev_arr, google_arr, deepl_arr)
+    df_train['cui_jacD_mev_google_deepl_abbr_un'] = jaccard_arr_flat_un(mev_arr, google_abbr_arr, deepl_abbr_arr)
+    df_train['cui_jacD_mev_google_deepl_abbr_un_A'] = jaccard_arr_flat_un_A(mev_arr, google_abbr_arr, deepl_abbr_arr)
 
     """df_train['macro_pre_cui_mev_google'] = precision_arr_flat(mev_arr, google_arr)
     df_train['macro_pre_cui_mev_deepl'] = precision_arr_flat(mev_arr, deepl_arr)
