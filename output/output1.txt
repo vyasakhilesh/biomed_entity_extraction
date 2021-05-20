@@ -1,4 +1,4 @@
-Tue May 18 15:41:29 2021       
+Thu May 20 13:51:55 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -7,7 +7,7 @@ Tue May 18 15:41:29 2021
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
 |   0  GeForce RTX 208...  On   | 00000000:1C:00.0 Off |                  N/A |
-| 27%   30C    P8    22W / 250W |      1MiB / 11019MiB |      0%      Default |
+| 27%   31C    P8    22W / 250W |      1MiB / 11019MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -25,43 +25,43 @@ pip install --no-binary :all: nmslib
   UserWarning)
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.1. This might lead to breaking code or invalid results. Use at your own risk.
   UserWarning)
-                                value  ... stop_words_deepl_abbr_len
-0                   Gastritis crÛnica  ...                         0
-1  Sarcoma PleomÛrfico Pectoral Mayor  ...                         0
-2                       hiperuricemia  ...                         0
-3            intervenido pÛlipo colon  ...                         0
-4         intervenido estenosis aorta  ...                         0
+  Value_ID  ... stop_words_deepl_abbr_len
+0   A10000  ...                         0
+1   A10001  ...                         0
+2   A10002  ...                         0
+3   A10003  ...                         0
+4   A10004  ...                         0
 
-[5 rows x 17 columns]
-DataFrame Size (1276, 17)
+[5 rows x 18 columns]
+DataFrame Size (1276, 18)
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
-Total_Time (0.09925581097602844(in Hrs) : 5.9553486982981365(in Mins)
-                                value  ... deepl_abbr_ents_len
-0                   Gastritis crÛnica  ...                   1
-1  Sarcoma PleomÛrfico Pectoral Mayor  ...                   2
-2                       hiperuricemia  ...                   1
-3            intervenido pÛlipo colon  ...                   2
-4         intervenido estenosis aorta  ...                   1
+Total_Time (0.10858201993836297(in Hrs) : 6.514921228090922(in Mins)
+  Value_ID  ... deepl_abbr_ents_len
+0   A10000  ...                   1
+1   A10001  ...                   2
+2   A10002  ...                   1
+3   A10003  ...                   2
+4   A10004  ...                   1
 
-[5 rows x 27 columns]
-DataFrame Size (1276, 27)
-                                value  ... cui_jacD_mev_google_deepl_abbr_un_A
-0                   Gastritis crÛnica  ...                            1.000000
-1  Sarcoma PleomÛrfico Pectoral Mayor  ...                            1.000000
-2                       hiperuricemia  ...                            1.000000
-3            intervenido pÛlipo colon  ...                            0.428571
-4         intervenido estenosis aorta  ...                            0.500000
+[5 rows x 28 columns]
+DataFrame Size (1276, 28)
+  Value_ID  ... cui_OC_mev_deepl_abbr
+0   A10000  ...                   1.0
+1   A10001  ...                   1.0
+2   A10002  ...                   1.0
+3   A10003  ...                   0.0
+4   A10004  ...                   1.0
 
-[5 rows x 61 columns]
-                                                  value  ... cui_jacD_mev_google_deepl_abbr_un_A
-1271               Trombosis central de retina bilteral  ...                            0.000000
-1272                  AIT SIN INFARTO CEREBRAL ASOCIADO  ...                            1.000000
-1273  RTU por tumor vesical ( no A-P por muestra mÌn...  ...                            1.000000
-1274                                        AIT en 2017  ...                            0.666667
-1275     hepatopatia crÛnica con fibrosis e HTP por VHB  ...                            0.333333
+[5 rows x 66 columns]
+     Value_ID  ... cui_OC_mev_deepl_abbr
+1271   A15415  ...              0.000000
+1272   A15417  ...              1.000000
+1273   A15423  ...              1.000000
+1274   A15442  ...              0.666667
+1275   A15444  ...              0.333333
 
-[5 rows x 61 columns]
-Total_Time (0.00016847352186838787(in Hrs) : 0.010108443101247151(in Mins)
+[5 rows x 66 columns]
+Total_Time (0.0001746519406636556(in Hrs) : 0.010479156176249187(in Mins)

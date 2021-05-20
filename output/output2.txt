@@ -1,0 +1,72 @@
+Thu May 20 15:01:42 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce RTX 208...  On   | 00000000:1C:00.0 Off |                  N/A |
+| 27%   33C    P8    22W / 250W |      1MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Your CPU supports instructions that this binary was not compiled to use: SSE3 SSE4.1 SSE4.2 AVX AVX2
+For maximum performance, you can install NMSLIB from sources 
+pip install --no-binary :all: nmslib
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfTransformer from version 0.20.3 when using version 0.24.1. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.1. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+  Value_ID                                value                           replacement                           google_abbr                           deepl_abbr
+0   A10000                    Gastritis crÛnica                     Chronic Gastritis                     Chronic Gastritis                    Chronic Gastritis
+1   A10001  Sarcoma PleomÛrfico Pectoral Mayor   Pectoralis Major Pleomorphic Sarcoma  Pectoralis Major Pleomorphic Sarcoma  Pectoralis Major PleomÛrfic Sarcoma
+2   A10002                        hiperuricemia                         Hyperuricemia                         Hyperuricemia                        Hyperuricemia
+3   A10003             intervenido pÛlipo colon                  Colon Polyp Operated                Colon Plipo Intervened              Intervened PÛlipo Colon
+4   A10004          intervenido estenosis aorta              Aortic Stenosis Operated              Operated Aortic Stenosis           Intervened Aortic Stenosis
+DataFrame Size (5451, 5)
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
+  Value_ID                                value                           replacement                           google_abbr                            deepl_abbr                                                                 mev_cui                                               google_abbr_cui                  deepl_abbr_cui
+0   A10000                    Gastritis crÛnica                     Chronic Gastritis                     Chronic Gastritis                     Chronic Gastritis                                          [C0341194, C0085695, C0267146]                                [C0341194, C0085695, C0267146]  [C0341194, C0085695, C0267146]
+1   A10001  Sarcoma PleomÛrfico Pectoral Mayor   Pectoralis Major Pleomorphic Sarcoma  Pectoralis Major Pleomorphic Sarcoma   Pectoralis Major PleomÛrfic Sarcoma            [C3674152, C0598607, C0030747, C3675353, C0205825, C1261358]  [C3674152, C0598607, C0030747, C3675353, C0205825, C1261358]  [C0030747, C3675353, C3674152]
+2   A10002                        hiperuricemia                         Hyperuricemia                         Hyperuricemia                         Hyperuricemia                                          [C4553069, C1856288, C0740394]                                [C4553069, C1856288, C0740394]  [C4553069, C1856288, C0740394]
+3   A10003             intervenido pÛlipo colon                  Colon Polyp Operated                Colon Plipo Intervened               Intervened PÛlipo Colon  [C0032584, C3242339, C3888384, C2684091, C0009368, C0027430, C0267573]                                [C2684091, C0009368, C3888384]  [C1705263, C0122111, C1333906]
+4   A10004          intervenido estenosis aorta              Aortic Stenosis Operated              Operated Aortic Stenosis            Intervened Aortic Stenosis                                [C3242339, C0340335, C0685726, C0003507]                                [C0349516, C0685726, C0003507]                      [C0003507]
+5   A10005                               Disnea                               Dyspnea                              Dyspnoea                               Dyspnea                                          [C1963100, C4304735, C0013404]                                [C0743330, C4304735, C0013404]  [C1963100, C4304735, C0013404]
+6   A10006                         Osteoporosis                          Osteoporosis                          Osteoporosis                          Osteoporosis                                          [C1962963, C2911643, C0029456]                                [C1962963, C2911643, C0029456]  [C1962963, C2911643, C0029456]
+7   A10007  Histerectomia con doble anexectomia       Hysterectomy Double Adnexectomy  Hysterectomy With Double Adnexectomy  Hysterectomy With Double Adnexectomy                                          [C0020699, C1548863, C0810415]                                [C0020699, C1548863, C0810415]  [C0020699, C1548863, C0810415]
+8   A10008            hipotiroidismo subclÌnico            Subclinical Hypothyroidism            Subclinical Hypothyroidism            Subclinical Hypothyroidism                                          [C1998045, C0020676, C0271790]                                [C1998045, C0020676, C0271790]  [C1998045, C0020676, C0271790]
+9   A10009        carcinoma de prÛstata en 2011                    Prostate Carcinoma            Prostate Carcinoma In 2011            Prostate Carcinoma In 2011                                          [C0600139, C4289839, C1370970]                                [C0600139, C4289839, C1370970]  [C0600139, C4289839, C1370970]
+  Value_ID                                value                           replacement                           google_abbr                            deepl_abbr                                                                 mev_cui                                               google_abbr_cui                  deepl_abbr_cui  mev_cui_len                                         google_deepl_abbr_cui TEXT_ID                                 TEXT                                                               FINAL_CUI  FINAL_CUI_len
+0   A10000                    Gastritis crÛnica                     Chronic Gastritis                     Chronic Gastritis                     Chronic Gastritis                                          [C0341194, C0085695, C0267146]                                [C0341194, C0085695, C0267146]  [C0341194, C0085695, C0267146]            3                                [C0085695, C0341194, C0267146]  A10000                    Gastritis crÛnica                                          [C0341194, C0085695, C0267146]              3
+1   A10001  Sarcoma PleomÛrfico Pectoral Mayor   Pectoralis Major Pleomorphic Sarcoma  Pectoralis Major Pleomorphic Sarcoma   Pectoralis Major PleomÛrfic Sarcoma            [C3674152, C0598607, C0030747, C3675353, C0205825, C1261358]  [C3674152, C0598607, C0030747, C3675353, C0205825, C1261358]  [C0030747, C3675353, C3674152]            6  [C3674152, C0598607, C0030747, C3675353, C0205825, C1261358]  A10001  Sarcoma PleomÛrfico Pectoral Mayor             [C3674152, C0598607, C0030747, C3675353, C0205825, C1261358]              6
+2   A10002                        hiperuricemia                         Hyperuricemia                         Hyperuricemia                         Hyperuricemia                                          [C4553069, C1856288, C0740394]                                [C4553069, C1856288, C0740394]  [C4553069, C1856288, C0740394]            3                                [C4553069, C1856288, C0740394]  A10002                        hiperuricemia                                          [C4553069, C1856288, C0740394]              3
+3   A10003             intervenido pÛlipo colon                  Colon Polyp Operated                Colon Plipo Intervened               Intervened PÛlipo Colon  [C0032584, C3242339, C3888384, C2684091, C0009368, C0027430, C0267573]                                [C2684091, C0009368, C3888384]  [C1705263, C0122111, C1333906]            7  [C1705263, C3888384, C2684091, C0009368, C1333906, C0122111]  A10003             intervenido pÛlipo colon  [C0032584, C3242339, C3888384, C2684091, C0009368, C0027430, C0267573]              7
+4   A10004          intervenido estenosis aorta              Aortic Stenosis Operated              Operated Aortic Stenosis            Intervened Aortic Stenosis                                [C3242339, C0340335, C0685726, C0003507]                                [C0349516, C0685726, C0003507]                      [C0003507]            4                                [C0003507, C0685726, C0349516]  A10004          intervenido estenosis aorta                                [C3242339, C0340335, C0685726, C0003507]              4
+5   A10005                               Disnea                               Dyspnea                              Dyspnoea                               Dyspnea                                          [C1963100, C4304735, C0013404]                                [C0743330, C4304735, C0013404]  [C1963100, C4304735, C0013404]            3                      [C1963100, C0743330, C4304735, C0013404]  A10005                               Disnea                                          [C1963100, C4304735, C0013404]              3
+6   A10006                         Osteoporosis                          Osteoporosis                          Osteoporosis                          Osteoporosis                                          [C1962963, C2911643, C0029456]                                [C1962963, C2911643, C0029456]  [C1962963, C2911643, C0029456]            3                                [C1962963, C2911643, C0029456]  A10006                         Osteoporosis                                          [C1962963, C2911643, C0029456]              3
+7   A10007  Histerectomia con doble anexectomia       Hysterectomy Double Adnexectomy  Hysterectomy With Double Adnexectomy  Hysterectomy With Double Adnexectomy                                          [C0020699, C1548863, C0810415]                                [C0020699, C1548863, C0810415]  [C0020699, C1548863, C0810415]            3                                [C0020699, C1548863, C0810415]  A10007  Histerectomia con doble anexectomia                                          [C0020699, C1548863, C0810415]              3
+8   A10008            hipotiroidismo subclÌnico            Subclinical Hypothyroidism            Subclinical Hypothyroidism            Subclinical Hypothyroidism                                          [C1998045, C0020676, C0271790]                                [C1998045, C0020676, C0271790]  [C1998045, C0020676, C0271790]            3                                [C1998045, C0020676, C0271790]  A10008            hipotiroidismo subclÌnico                                          [C1998045, C0020676, C0271790]              3
+9   A10009        carcinoma de prÛstata en 2011                    Prostate Carcinoma            Prostate Carcinoma In 2011            Prostate Carcinoma In 2011                                          [C0600139, C4289839, C1370970]                                [C0600139, C4289839, C1370970]  [C0600139, C4289839, C1370970]            3                                [C0600139, C4289839, C1370970]  A10009        carcinoma de prÛstata en 2011                                          [C0600139, C4289839, C1370970]              3
+  TEXT_ID FINAL_CUI
+0  A10000  C0341194
+1  A10000  C0085695
+2  A10000  C0267146
+3  A10001  C3674152
+4  A10001  C0598607
+5  A10001  C0030747
+6  A10001  C3675353
+7  A10001  C0205825
+8  A10001  C1261358
+9  A10002  C4553069
+Total_Time (0.057508159478505454(in Hrs) : 3.450489596525828(in Mins)

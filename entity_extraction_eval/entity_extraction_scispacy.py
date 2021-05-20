@@ -1,19 +1,22 @@
 import scispacy
 import spacy
 from scispacy.linking import EntityLinker
+from scispacy.abbreviation import AbbreviationDetector
 import time
 import pandas as pd
 import pickle
+import numpy as np
 
 spacy.require_gpu()
 nlp = spacy.load("en_core_sci_lg")
-nlp.add_pipe("scispacy_linker", config={"k":30,"resolve_abbreviations": True, "linker_name": "umls", 
+nlp.add_pipe("scispacy_linker", config={"k":30,"resolve_abbreviations": False, "linker_name": "umls", 
                 "filter_for_definitions":False, "threshold":0.7})
 linker = nlp.get_pipe("scispacy_linker")
 
 def text_entity_score(text, top=3):
-    text = str(text)
-    doc = nlp(text)
+    if text != text:
+        text = ''
+    doc = nlp(str(text))
     # print(list(doc.sents))
     # print(doc.ents)
 
@@ -36,13 +39,15 @@ def text_entity_score(text, top=3):
 
 
 def extracts_entity(text):
-    text = str(text)
-    doc = nlp(text)
+    if text != text:
+        text = ''
+    doc = nlp(str(text))
     return doc.ents
 
 def extracts_entity_len(text):
-    text = str(text)
-    doc = nlp(text)
+    if text != text:
+        text = ''
+    doc = nlp(str(text))
     return len(doc.ents)
 
 
@@ -50,7 +55,7 @@ def extracts_entity_len(text):
 def main():
     path = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/'
     path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output/'
-    df_train = pd.read_csv(path+'train_MEV.csv', encoding='utf-8')
+    df_train = pd.read_csv(path_output+'train_MEV.csv', encoding='utf-8')
     print (df_train.head(5))
     print ("DataFrame Size", df_train.shape)
     
@@ -99,7 +104,7 @@ def main():
     df_train['deepl_abbr_ents_len'] = df_train['deepl_abbr'].apply(extracts_entity_len)
 
 
-    df_train = df_train.to_csv(path+'train_MEV_ents.csv', encoding='utf-8', index=False)
+    df_train = df_train.to_csv(path_output+'train_MEV_ents.csv', encoding='utf-8', index=False)
 
 
 if __name__ == "__main__":

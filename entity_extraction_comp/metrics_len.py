@@ -26,6 +26,16 @@ def jaccard_similarity_A(l1, l2):
     except:
         return np.nan
 
+def overlap_coefficient(l1, l2):
+    s1 = set(l1)
+    s2 = set(l2)
+    intersection = len(s1.intersection(s2))
+    min_c = min(len(s1), len(s2))
+    try:
+        return intersection / min_c
+    except:
+        return np.nan
+
 def jaccard_arr(arr1, arr2):
     score_l = []
     for t1_l, t2_l in zip(arr1, arr2):
@@ -50,6 +60,15 @@ def jaccard_arr_flat(arr1, arr2):
         e1_l = [cui for i in t1_l for cui, _ in i]
         e2_l = [cui for i in t2_l for cui, _ in i]
         score = jaccard_similarity(e1_l, e2_l)
+        score_l.append(score)
+    return score_l
+
+def oc_arr_flat(arr1, arr2):
+    score_l = []
+    for t1_l, t2_l in zip(arr1, arr2):
+        e1_l = [cui for i in t1_l for cui, _ in i]
+        e2_l = [cui for i in t2_l for cui, _ in i]
+        score = overlap_coefficient(e1_l, e2_l)
         score_l.append(score)
     return score_l
 
@@ -218,6 +237,13 @@ def main():
     df_train['cui_jacD_mev_google_deepl_un_A'] = jaccard_arr_flat_un_A(mev_arr, google_arr, deepl_arr)
     df_train['cui_jacD_mev_google_deepl_abbr_un'] = jaccard_arr_flat_un(mev_arr, google_abbr_arr, deepl_abbr_arr)
     df_train['cui_jacD_mev_google_deepl_abbr_un_A'] = jaccard_arr_flat_un_A(mev_arr, google_abbr_arr, deepl_abbr_arr)
+
+
+    # overlap coefficient
+    df_train['cui_OC_mev_google'] = oc_arr_flat(mev_arr, google_arr)
+    df_train['cui_OC_mev_deepl'] = oc_arr_flat(mev_arr, deepl_arr)
+    df_train['cui_OC_mev_google_abbr'] = oc_arr_flat(mev_arr, google_abbr_arr)
+    df_train['cui_OC_mev_deepl_abbr'] = oc_arr_flat(mev_arr, deepl_abbr_arr)
 
     """df_train['macro_pre_cui_mev_google'] = precision_arr_flat(mev_arr, google_arr)
     df_train['macro_pre_cui_mev_deepl'] = precision_arr_flat(mev_arr, deepl_arr)
