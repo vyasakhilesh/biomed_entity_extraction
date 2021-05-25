@@ -1,4 +1,4 @@
-Thu May 20 13:51:55 2021       
+Tue May 25 08:56:29 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -6,8 +6,8 @@ Thu May 20 13:51:55 2021
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
-|   0  GeForce RTX 208...  On   | 00000000:1C:00.0 Off |                  N/A |
-| 27%   31C    P8    22W / 250W |      1MiB / 11019MiB |      0%      Default |
+|   0  GeForce RTX 208...  On   | 00000000:3D:00.0 Off |                  N/A |
+| 27%   27C    P8    20W / 250W |      1MiB / 11019MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -33,12 +33,12 @@ pip install --no-binary :all: nmslib
 4   A10004  ...                         0
 
 [5 rows x 18 columns]
-DataFrame Size (1276, 18)
+DataFrame Size (1589, 18)
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
-Total_Time (0.10858201993836297(in Hrs) : 6.514921228090922(in Mins)
+Total_Time (0.12382755021254221(in Hrs) : 7.42965304851532(in Mins)
   Value_ID  ... deepl_abbr_ents_len
 0   A10000  ...                   1
 1   A10001  ...                   2
@@ -47,7 +47,7 @@ Total_Time (0.10858201993836297(in Hrs) : 6.514921228090922(in Mins)
 4   A10004  ...                   1
 
 [5 rows x 28 columns]
-DataFrame Size (1276, 28)
+DataFrame Size (1589, 28)
   Value_ID  ... cui_OC_mev_deepl_abbr
 0   A10000  ...                   1.0
 1   A10001  ...                   1.0
@@ -57,11 +57,11 @@ DataFrame Size (1276, 28)
 
 [5 rows x 66 columns]
      Value_ID  ... cui_OC_mev_deepl_abbr
-1271   A15415  ...              0.000000
-1272   A15417  ...              1.000000
-1273   A15423  ...              1.000000
-1274   A15442  ...              0.666667
-1275   A15444  ...              0.333333
+1584   A15422  ...                   NaN
+1585   A15423  ...              1.000000
+1586   A15442  ...              0.666667
+1587   A15444  ...              0.333333
+1588   A15445  ...                   NaN
 
 [5 rows x 66 columns]
-Total_Time (0.0001746519406636556(in Hrs) : 0.010479156176249187(in Mins)
+Total_Time (0.00019860770967271594(in Hrs) : 0.011916502316792806(in Mins)

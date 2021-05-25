@@ -43,6 +43,11 @@ def extracts_entity_len(text):
     doc = nlp(str(text))
     return len(doc.ents)
 
+def get_canonical_name(cui_id):
+    try:
+        return linker.kb.cui_to_entity[cui_id].canonical_name
+    except:
+        return np.nan
 
 
 def main():
@@ -69,12 +74,14 @@ def main():
     df['FINAL_CUI_len'] = df['FINAL_CUI'].apply(lambda x:len(x))
     df_id_cui = df[['TEXT_ID','FINAL_CUI']]
     df_id_cui_expand = df_id_cui.explode('FINAL_CUI', ignore_index=True)
-    
+    df_id_cui_expand['Canonical_Name'] = df_id_cui_expand['FINAL_CUI']\
+                                        .apply(get_canonical_name)
     Displays.display(df.head(10))
     Displays.display(df_id_cui_expand.head(10))
     # save to files
     df.to_csv(path_output+'id_text_cuiLst.csv', encoding='utf-8', index=False)
-    df_id_cui_expand.drop_duplicates().to_csv(path_output+'id_cuis_kg.csv', encoding='utf-8', index=False)
+    df_id_cui_expand[['TEXT_ID','FINAL_CUI']].drop_duplicates().to_csv(path_output+'id_cuis_kg.csv', encoding='utf-8', index=False)
+    df_id_cui_expand.drop_duplicates().to_csv(path_output+'id_cuis_cn.csv', encoding='utf-8', index=False)
     df[['TEXT_ID','TEXT']].drop_duplicates().to_csv(path_output+'id_text_kg.csv', encoding='utf-8', index=False)
     
 
