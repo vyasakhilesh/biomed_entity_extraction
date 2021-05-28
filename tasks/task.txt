@@ -1,0 +1,9 @@
+# scispacy diffeent version
+# abbreviations -- all considered
+# Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.2
+# different results with online and offline model
+
+
+# New Text
+Fibroadenoma de mama,
+"- Meningitis en el nacimiento, sin secuelas",

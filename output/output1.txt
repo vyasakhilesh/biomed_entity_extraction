@@ -1,4 +1,4 @@
-Tue May 25 08:56:29 2021       
+Tue May 25 13:40:30 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -7,7 +7,7 @@ Tue May 25 08:56:29 2021
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
 |   0  GeForce RTX 208...  On   | 00000000:3D:00.0 Off |                  N/A |
-| 27%   27C    P8    20W / 250W |      1MiB / 11019MiB |      0%      Default |
+| 27%   28C    P8    20W / 250W |      1MiB / 11019MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -21,9 +21,9 @@ Tue May 25 08:56:29 2021
 Your CPU supports instructions that this binary was not compiled to use: SSE3 SSE4.1 SSE4.2 AVX AVX2
 For maximum performance, you can install NMSLIB from sources 
 pip install --no-binary :all: nmslib
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfTransformer from version 0.20.3 when using version 0.24.1. This might lead to breaking code or invalid results. Use at your own risk.
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfTransformer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
   UserWarning)
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.1. This might lead to breaking code or invalid results. Use at your own risk.
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
   UserWarning)
   Value_ID  ... stop_words_deepl_abbr_len
 0   A10000  ...                         0
@@ -38,7 +38,7 @@ DataFrame Size (1589, 18)
   extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
 /nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
   extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
-Total_Time (0.12382755021254221(in Hrs) : 7.42965304851532(in Mins)
+Total_Time (0.12087633841567569(in Hrs) : 7.252580348650614(in Mins)
   Value_ID  ... deepl_abbr_ents_len
 0   A10000  ...                   1
 1   A10001  ...                   2
@@ -64,4 +64,4 @@ DataFrame Size (1589, 28)
 1588   A15445  ...                   NaN
 
 [5 rows x 66 columns]
-Total_Time (0.00019860770967271594(in Hrs) : 0.011916502316792806(in Mins)
+Total_Time (0.0001704149776034885(in Hrs) : 0.010224926471710204(in Mins)
