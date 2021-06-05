@@ -66,6 +66,8 @@ def main():
     Displays.display(df.head(10))
 
     df['mev_cui_len']=df['mev_cui'].apply(lambda x: len(x))
+    df['google_abbr_cui_len']=df['google_abbr_cui'].apply(lambda x: len(x))
+    df['deepl_abbr_cui_len']=df['deepl_abbr_cui'].apply(lambda x: len(x))
     df['google_deepl_abbr_cui']=(df['google_abbr_cui']+df['deepl_abbr_cui']).apply(lambda x: list(set(x)))
     # df['ID'] = ['ID'+ str(x) for x in df.index.tolist()]
     df['TEXT_ID'] = df['Value_ID']
