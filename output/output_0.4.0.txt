@@ -1,4 +1,4 @@
-Tue May 25 13:40:30 2021       
+Tue Jun  8 12:44:17 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -6,8 +6,8 @@ Tue May 25 13:40:30 2021
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
-|   0  GeForce RTX 208...  On   | 00000000:3D:00.0 Off |                  N/A |
-| 27%   28C    P8    20W / 250W |      1MiB / 11019MiB |      0%      Default |
+|   0  GeForce RTX 208...  Off  | 00000000:40:00.0 Off |                  N/A |
+|  4%   42C    P0    45W / 250W |      0MiB / 11019MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -21,9 +21,9 @@ Tue May 25 13:40:30 2021
 Your CPU supports instructions that this binary was not compiled to use: SSE3 SSE4.1 SSE4.2 AVX AVX2
 For maximum performance, you can install NMSLIB from sources 
 pip install --no-binary :all: nmslib
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfTransformer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy_0.4/lib/python3.6/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfTransformer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
   UserWarning)
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy_0.4/lib/python3.6/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
   UserWarning)
   Value_ID  ... stop_words_deepl_abbr_len
 0   A10000  ...                         0
@@ -34,11 +34,14 @@ pip install --no-binary :all: nmslib
 
 [5 rows x 18 columns]
 DataFrame Size (1589, 18)
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy_0.4/lib/python3.6/site-packages/scispacy/candidate_generation.py:284: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
   extended_neighbors[empty_vectors_boolean_flags] = numpy.array(neighbors)[:-1]
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy/lib/python3.7/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy_0.4/lib/python3.6/site-packages/scispacy/candidate_generation.py:285: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
   extended_distances[empty_vectors_boolean_flags] = numpy.array(distances)[:-1]
-Total_Time (0.12087633841567569(in Hrs) : 7.252580348650614(in Mins)
+Total_Time (0.18309363808896806(in Hrs) : 10.98561832110087(in Mins)
+
+
+
   Value_ID  ... deepl_abbr_ents_len
 0   A10000  ...                   1
 1   A10001  ...                   2
@@ -58,10 +61,10 @@ DataFrame Size (1589, 28)
 [5 rows x 66 columns]
      Value_ID  ... cui_OC_mev_deepl_abbr
 1584   A15422  ...                   NaN
-1585   A15423  ...              1.000000
-1586   A15442  ...              0.666667
-1587   A15444  ...              0.333333
+1585   A15423  ...                   1.0
+1586   A15442  ...                   0.0
+1587   A15444  ...                   1.0
 1588   A15445  ...                   NaN
 
 [5 rows x 66 columns]
-Total_Time (0.0001704149776034885(in Hrs) : 0.010224926471710204(in Mins)
+Total_Time (0.00016648067368401422(in Hrs) : 0.009988884131113688(in Mins)

@@ -151,7 +151,7 @@ def recall_arr_flat(arr1, arr2, top=5):
 def main():
 
     path = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/'
-    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output/'
+    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output_0.2.4/'
 
     df_train = pd.read_csv(path_output+'train_MEV_ents.csv', encoding='utf-8')
     print (df_train.head(5))
