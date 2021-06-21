@@ -103,7 +103,9 @@ def main():
 
     with open(path_output+'deepl_abbr_withst_num_ent_score.pkl','wb') as f:
         pickle.dump(df_train['deepl_abbr_withst_num'].apply(text_entity_score), f)
-
+    
+    df_train['value_ents'] = df_train['value'].apply(extracts_entity)
+    df_train['value_abbr_ents'] = df_train['value_witht_abbr'].apply(extracts_entity)
     df_train['ents'] = df_train['replacement'].apply(extracts_entity)
     df_train['google_ents'] = df_train['google'].apply(extracts_entity)
     df_train['deepl_ents'] = df_train['deepl'].apply(extracts_entity)
@@ -112,7 +114,7 @@ def main():
     df_train['deepl_abbr_ents'] = df_train['deepl_abbr'].apply(extracts_entity)
     
     df_train['value_ents_len'] = df_train['value'].apply(extracts_entity_len)
-    df_train['value_abbr_ents_len'] = df_train['value_abbr'].apply(extracts_entity_len)
+    df_train['value_abbr_ents_len'] = df_train['value_witht_abbr'].apply(extracts_entity_len)
     df_train['ents_len'] = df_train['replacement'].apply(extracts_entity_len)
     df_train['google_ents_len'] = df_train['google'].apply(extracts_entity_len)
     df_train['deepl_ents_len'] = df_train['deepl'].apply(extracts_entity_len)

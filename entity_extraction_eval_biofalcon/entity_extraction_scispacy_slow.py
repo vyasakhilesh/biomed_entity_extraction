@@ -111,7 +111,7 @@ def main():
     
     # extract entites
     df_train['value_ents'] = extracts_entity_series(df_train['value'])
-    df_train['value_abbr_ents'] = extracts_entity_series(df_train['value_abbr'])
+    df_train['value_abbr_ents'] = extracts_entity_series(df_train['value_witht_abbr'])
     df_train['ents'] = extracts_entity_series(df_train['replacement'])
     df_train['google_ents'] = extracts_entity_series(df_train['google'])
     df_train['deepl_ents'] = extracts_entity_series(df_train['deepl'])
@@ -121,7 +121,7 @@ def main():
     
     # extract entites len
     df_train['value_ents_len'] = extracts_entity_len_series(df_train['value'])
-    df_train['value_abbr_ents_len'] = extracts_entity_len_series(df_train['value_abbr'])
+    df_train['value_abbr_ents_len'] = extracts_entity_len_series(df_train['value_witht_abbr'])
     df_train['ents_len'] = extracts_entity_len_series(df_train['replacement'])
     df_train['google_ents_len'] = extracts_entity_len_series(df_train['google'])
     df_train['deepl_ents_len'] = extracts_entity_len_series(df_train['deepl'])
