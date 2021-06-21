@@ -67,7 +67,7 @@ def extracts_entity_len_series(series):
 
 def main():
     path = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/'
-    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output_biofalcon/'
+    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output_biofalcon_slow/'
     df_train = pd.read_csv(path_output+'train_MEV.csv', encoding='utf-8')
     print (df_train.head(5))
     print ("DataFrame Size", df_train.shape)
