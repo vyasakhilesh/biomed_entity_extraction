@@ -60,64 +60,6 @@ def extracts_entity_len(text):
         return len([])
 
 
-def text_entity_score_series(series, top=1):
-    ss = []
-    for index, text in series.items():
-        if text != text:
-            text = ''
-        payload = '{"text":"'+text+'"}'
-        r = requests.post(url, data=payload.encode('utf-8'), headers=headers)
-        if r.status_code == 200:
-            response=r.json()
-            #print(response)
-            if len(response['entities_UMLS'])!=0:
-                #print (text, response['entities_UMLS'])
-                ss.append([[(men_cui[1],men_cui[0]) for men_cui in response['entities_UMLS']]])
-            else:
-                ss.append([[]])
-        else:
-            ss.append([[]])
-    return ss
-
-
-def extracts_entity_series(series):
-    ss = []
-    for index, text in series.items():
-        if text != text:
-            text = ''
-        payload = '{"text":"'+text+'"}'
-        r = requests.post(url, data=payload.encode('utf-8'), headers=headers)
-        if r.status_code == 200:
-            response=r.json()
-            #print(response)
-            if len(response['entities_UMLS'])!=0:
-                #print (text, response['entities_UMLS'])
-                ss.append([men_cui[0] for men_cui in response['entities_UMLS']])
-            else:
-                ss.append([])
-        else:
-            ss.append([])
-    return ss
-
-def extracts_entity_series(series):
-    ss = []
-    for index, text in series.items():
-        if text != text:
-            text = ''
-        payload = '{"text":"'+text+'"}'
-        r = requests.post(url, data=payload.encode('utf-8'), headers=headers)
-        if r.status_code == 200:
-            response=r.json()
-            #print(response)
-            if len(response['entities_UMLS'])!=0:
-                # print (text, response['entities_UMLS'])
-                ss.append(len([men_cui[0] for men_cui in response['entities_UMLS']]))
-            else:
-                ss.append(len([]))
-        else:
-            ss.append(len([]))
-    return ss
-
 def main():
     path = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/'
     path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output_biofalcon/'

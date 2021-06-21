@@ -46,7 +46,7 @@ def extracts_entity_series(series):
             ss.append([])
     return ss
 
-def extracts_entity_series(series):
+def extracts_entity_len_series(series):
     ss = []
     for index, text in series.items():
         if text != text:
@@ -120,13 +120,13 @@ def main():
     df_train['deepl_abbr_ents'] = extracts_entity_series(df_train['deepl_abbr'])
     
     # extract entites len
-    df_train['value_ents_len'] = df_train['value'].apply(extracts_entity_len)
-    df_train['value_abbr_ents_len'] = df_train['value_abbr'].apply(extracts_entity_len)
-    df_train['ents_len'] = df_train['replacement'].apply(extracts_entity_len)
-    df_train['google_ents_len'] = df_train['google'].apply(extracts_entity_len)
-    df_train['deepl_ents_len'] = df_train['deepl'].apply(extracts_entity_len)
-    df_train['google_abbr_ents_len'] = df_train['google_abbr'].apply(extracts_entity_len)
-    df_train['deepl_abbr_ents_len'] = df_train['deepl_abbr'].apply(extracts_entity_len)
+    df_train['value_ents_len'] = extracts_entity_len_series(df_train['value'])
+    df_train['value_abbr_ents_len'] = extracts_entity_len_series(df_train['value_abbr'])
+    df_train['ents_len'] = extracts_entity_len_series(df_train['replacement'])
+    df_train['google_ents_len'] = extracts_entity_len_series(df_train['google'])
+    df_train['deepl_ents_len'] = extracts_entity_len_series(df_train['deepl'])
+    df_train['google_abbr_ents_len'] = extracts_entity_len_series(df_train['google_abbr'])
+    df_train['deepl_abbr_ents_len'] = extracts_entity_len_series(df_train['deepl_abbr'])
 
 
     df_train = df_train.to_csv(path_output+'train_MEV_ents.csv', encoding='utf-8', index=False)
