@@ -1,10 +1,6 @@
-import scispacy
 import spacy
-from scispacy.linking import EntityLinker
-from scispacy.abbreviation import AbbreviationDetector
 import time
 import pandas as pd
-import pickle
 import numpy as np
 import IPython.display as Displays
 pd.options.display.width = 0

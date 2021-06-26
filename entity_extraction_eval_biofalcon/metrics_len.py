@@ -131,7 +131,7 @@ def jaccard_arr_flat_un_A(arr1, arr2, arr3):
 def main():
 
     path = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/'
-    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output_biofalcon/'
+    path_output = '/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output_biofalcon_slow/'
 
     df_train = pd.read_csv(path_output+'train_MEV_ents.csv', encoding='utf-8')
     print (df_train.head(5))
