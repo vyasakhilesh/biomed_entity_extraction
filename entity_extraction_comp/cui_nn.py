@@ -42,7 +42,7 @@ with open(path+'embeddings_cui.pkl', 'rb') as f:
     embeddings_cui = pickle.load(f)
     
 embeddings_cui_imp = {key:value for key, value in embeddings_cui.items() if key in imp_cui_dict}
-
+embeddings_cui = dict(list(embeddings_cui.items())[0:10])
 
 def get_canonical_name(cui_id):
     try:
@@ -51,57 +51,37 @@ def get_canonical_name(cui_id):
         return ''
 
 def get_cosine(vec1, vec2):
-    """Get cosine for two given vectors"""
     return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
 
-def nearest_cs(cui):
+def nearest_cui_cs_imp(cui):
     if cui in embeddings_cui:
-        tmp_l = {}
-        for key, value in embeddings_cui_imp.items():
-            tmp_l[key] = get_cosine(embeddings_cui[cui], value)
-        #print (tmp_l)
-        return list({k: v for k, v in sorted(tmp_l.items(), 
-                    key=lambda item: item[1],reverse=True)}.items())[0][1]
-    else:
-        return np.nan
-
-def nearest_cui(cui):
-    if cui in embeddings_cui:
-        tmp_l = {}
-        for key, value in embeddings_cui_imp.items():
-            tmp_l[key] = get_cosine(embeddings_cui[cui], value)
-        #print (tmp_l)
-        return list({k: v for k, v in sorted(tmp_l.items(), 
-                    key=lambda item: item[1], reverse=True)}.items())[0][0]
-    else:
-        return 'Others'
-
-def nearest_cs_all(cui):
-    if cui in embeddings_cui_imp:
-        return 1.0
-    if cui in embeddings_cui:
+        cui_emb = embeddings_cui[cui]
         prev_score = -1.0
-        for key, value in embeddings_cui.items():
-            score = get_cosine(embeddings_cui[cui], value)
+        pre_cui = ''
+        for cuii, emb in embeddings_cui_imp.items():
+            score = get_cosine(cui_emb, emb)
             if score > prev_score:
+                pre_cui = cuii
                 prev_score = score
-        return prev_score
+        return (pre_cui, prev_score)
     else:
-        return np.nan
-
+        return ('Others',np.nan)
 
 def nearest_cui_cs_all(cui):
     if cui in embeddings_cui_imp:
         return (cui, 1.0)
     if cui in embeddings_cui:
+        embeddings_cui_tmp = embeddings_cui.copy()
+        del embeddings_cui_tmp[cui]
+        cui_emb = embeddings_cui[cui]
         prev_score = -1.0
-        pre_key = ''
-        for key, value in embeddings_cui.items():
-            score = get_cosine(embeddings_cui[cui], value)
+        pre_cui = ''
+        for cuii, emb in embeddings_cui_tmp.items():
+            score = get_cosine(cui_emb, emb)
             if score > prev_score:
-                pre_key = key
+                pre_cui = cuii
                 prev_score = score
-        return (pre_key, prev_score)
+        return (pre_cui, prev_score)
     else:
         return ('Others',np.nan)
 
@@ -116,10 +96,11 @@ def main():
     df_top_cn['Canonical_Name'] = df_top_cn['CUI'].apply(lambda x : cui_cn_dict[x])
     df_top_cn['TEXT_ID_COUNT'] = df_top_cn['TEXT_ID']
 
-    
-    df_top_cn['CUI_NN_imp'] = df_top_cn['CUI'].apply(nearest_cui)
+    #imp
+    cui_nn_cs_imp = df_top_cn['CUI'].apply(lambda x : nearest_cui_cs_imp(x))
+    df_top_cn['CUI_NN_imp'] = [i for i,_ in cui_nn_cs_imp]
     df_top_cn['CUI_NN_CN_imp'] = df_top_cn['CUI_NN_imp'].apply(lambda x : cui_cn_dict[x] if x in cui_cn_dict else '')
-    df_top_cn['CUI_NN_CS_imp'] = df_top_cn['CUI'].apply(nearest_cs)
+    df_top_cn['CUI_NN_CS_imp'] = [j for _,j in cui_nn_cs_imp]
 
     # All
     cui_nn_cs_all = df_top_cn['CUI'].apply(lambda x : nearest_cui_cs_all(x))
