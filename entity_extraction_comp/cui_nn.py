@@ -6,6 +6,7 @@ import IPython.display as Displays
 import scispacy
 from scispacy.linking import EntityLinker
 import time
+from operator import itemgetter
 
 pd.options.display.width = 0
 pd.set_option('display.max_rows', 6000)
@@ -42,7 +43,7 @@ with open(path+'embeddings_cui.pkl', 'rb') as f:
     embeddings_cui = pickle.load(f)
     
 embeddings_cui_imp = {key:value for key, value in embeddings_cui.items() if key in imp_cui_dict}
-embeddings_cui = dict(list(embeddings_cui.items())[0:10])
+#embeddings_cui = dict(list(embeddings_cui.items())[0:10])
 
 def get_canonical_name(cui_id):
     try:
@@ -74,14 +75,16 @@ def nearest_cui_cs_all(cui):
         embeddings_cui_tmp = embeddings_cui.copy()
         del embeddings_cui_tmp[cui]
         cui_emb = embeddings_cui[cui]
-        prev_score = -1.0
-        pre_cui = ''
-        for cuii, emb in embeddings_cui_tmp.items():
-            score = get_cosine(cui_emb, emb)
-            if score > prev_score:
-                pre_cui = cuii
-                prev_score = score
-        return (pre_cui, prev_score)
+        # prev_score = -1.0
+        # pre_cui = ''
+        # for cuii, emb in embeddings_cui_tmp.items():
+        #     score = get_cosine(cui_emb, emb)
+        #     if score > prev_score:
+        #         pre_cui = cuii
+        #         prev_score = score
+        # return (pre_cui, prev_score)
+        return max([(cuii,get_cosine(cui_emb, emb)) for cuii, emb in embeddings_cui_tmp.items()],key=itemgetter(1))
+        
     else:
         return ('Others',np.nan)
 
@@ -109,6 +112,9 @@ def main():
     df_top_cn['CUI_NN_CS_all'] = [j for _,j in cui_nn_cs_all]
     
     df_top_cn.sort_values(by=['CUI_NN_CS_all'], inplace=True, ascending=False)
+
+    df_top_cn.to_csv(path_output+'df_top_cn_CS.csv', encoding='utf-8', index=False)
+
     Displays.display(df_top_cn.head(10))
 
 
