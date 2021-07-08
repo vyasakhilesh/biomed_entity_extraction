@@ -154,12 +154,12 @@ def main():
     df_top_cn['CUI'] = df_top_cn.index.tolist()
     df_top_cn['Canonical_Name'] = df_top_cn['CUI'].apply(lambda x : cui_cn_dict[x])
     df_top_cn.rename(columns={'TEXT_ID':'TEXT_ID_COUNT'},inplace=True)
-    df_top_cn = df_top_cn[['CUI','Canonical_Name','TEXT_ID_COUNT']]
+    df_top_cn = df_top_cn[['TEXT_ID_COUNT','CUI','Canonical_Name',]]
     df_top_cn.reset_index(drop=True, inplace=True)
     print (df_top_cn.head(5))
     
 
-    #df_top_cn = df_top_cn.iloc[0:100]
+     #df_top_cn = df_top_cn.iloc[0:10]
     # Add semantic type 
     df_top_cn['semantic_type'] = df_top_cn['CUI'].apply(lambda cui : extract_semantic_type(cui))
     
@@ -179,6 +179,7 @@ def main():
     cui_nn_cs_all = df_top_cn['CUI'].apply(lambda x : nearest_cui_cs_all(x))
     df_top_cn['CUI_NN_all'] = [i for i,_ in cui_nn_cs_all]
     df_top_cn['CUI_NN_CN_all'] = df_top_cn['CUI_NN_all'].apply(lambda x : get_canonical_name(x))
+    df_top_cn['CUI_NN_SEM_all'] = df_top_cn['CUI_NN_all'].apply(lambda x : extract_semantic_type(x))
     df_top_cn['CUI_NN_CS_all'] = [j for _,j in cui_nn_cs_all]
 
     # df_top_cn.sort_values(by=['CUI_NN_CS_all'], inplace=True, ascending=False)

@@ -1,4 +1,4 @@
-Thu Jul  8 17:28:38 2021       
+Thu Jul  8 17:43:07 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -18,3 +18,25 @@ Thu Jul  8 17:28:38 2021
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
+Your CPU supports instructions that this binary was not compiled to use: SSE3 SSE4.1 SSE4.2 AVX AVX2
+For maximum performance, you can install NMSLIB from sources 
+pip install --no-binary :all: nmslib
+sys:1: DtypeWarning: Columns (8) have mixed types.Specify dtype option on import or set low_memory=False.
+   TEXT_ID_COUNT       CUI            Canonical_Name
+0             83  C0520679  Sleep Apnea, Obstructive
+1             81  C0037315     Sleep Apnea Syndromes
+2             79  C1332550            Bilateral Mass
+3             79  C0459680  Bilateral lateral rectus
+4             79  C0238767                 Bilateral
+   TEXT_ID_COUNT       CUI                  Canonical_Name                             semantic_type CUI_NN_all                  CUI_NN_CN_all           CUI_NN_SEM_all  CUI_NN_CS_all
+0             83  C0520679        Sleep Apnea, Obstructive                   ['Disease or Syndrome']   C0520679       sleep apnea, obstructive  ['Disease or Syndrome']       1.000000
+1             81  C0037315           Sleep Apnea Syndromes                   ['Disease or Syndrome']   C0520679       sleep apnea, obstructive  ['Disease or Syndrome']       0.871070
+2             79  C1332550                  Bilateral Mass                               ['Finding']                                                                               NaN
+3             79  C0459680        Bilateral lateral rectus  ['Body Part, Organ, or Organ Component']                                                                               NaN
+4             79  C0238767                       Bilateral                                                                                                                         NaN
+5             78  C0038454        Cerebrovascular accident                   ['Disease or Syndrome']   C0393949  other cerebrovascular disease  ['Disease or Syndrome']       0.851070
+6             68  C0457801  Current non-drinker of alcohol                               ['Finding']   C0556385            craving for alcohol              ['Finding']       0.940142
+7             64  C0556338                         Drinker                               ['Finding']                                                                               NaN
+8             64  C0556317                    Drinks alone                               ['Finding']                                                                               NaN
+9             62  C0886296           Nursing interventions                                                                                                                         NaN
+Total_Time (0.0012610599729749891(in Hrs) : 0.07566361427307129(in Mins)
