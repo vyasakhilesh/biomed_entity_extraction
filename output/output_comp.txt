@@ -1,4 +1,4 @@
-Mon Jun 28 13:14:00 2021       
+Thu Jul  8 17:28:38 2021       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
@@ -6,8 +6,8 @@ Mon Jun 28 13:14:00 2021
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
-|   0  GeForce RTX 208...  Off  | 00000000:1E:00.0 Off |                  N/A |
-|  9%   44C    P0    43W / 250W |      0MiB / 11019MiB |      0%      Default |
+|   0  GeForce RTX 208...  Off  | 00000000:40:00.0 Off |                  N/A |
+| 12%   41C    P0    36W / 250W |      0MiB / 11019MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -18,23 +18,3 @@ Mon Jun 28 13:14:00 2021
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
-Your CPU supports instructions that this binary was not compiled to use: SSE3 SSE4.1 SSE4.2 AVX AVX2
-For maximum performance, you can install NMSLIB from sources 
-pip install --no-binary :all: nmslib
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy_0.4/lib/python3.6/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfTransformer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
-  UserWarning)
-/nfs/home/vyasa/software/pkg/miniconda3/envs/scispacy_0.4/lib/python3.6/site-packages/sklearn/base.py:315: UserWarning: Trying to unpickle estimator TfidfVectorizer from version 0.20.3 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
-  UserWarning)
-           TEXT_ID       CUI                           Canonical_Name  TEXT_ID_COUNT CUI_NN_imp                                              CUI_NN_CN_imp  CUI_NN_CS_imp CUI_NN_all                             CUI_NN_CN_all  CUI_NN_CS_all
-FINAL_CUI                                                                                                                                                                                                                                    
-C0555957         1  C0555957                              Scaly scalp              1   C0024117                         Chronic Obstructive Airway Disease       0.068847   C0420607  Examination categorized by action status            1.0
-C0269202         1  C0269202                           Cyst of cervix              1   C0024117                         Chronic Obstructive Airway Disease       0.068845   C0075504                            sulfabenzamide            1.0
-C0578682         1  C0578682                     Madarosis of eyebrow              1   C0024117                         Chronic Obstructive Airway Disease       0.068850   C2343567                                 Pedia-Lax            1.0
-C1838421         2  C1838421                        No kidney disease              2   C1559265  Adverse Event Associated with the Gastrointestinal System       0.999999   C0560505                               Able to hit            1.0
-C1513735         1  C1513735                      Multilocular Lesion              1   C0024117                         Chronic Obstructive Airway Disease       0.068841   C0455205                              Skin finding            1.0
-C1262289         1  C1262289                    dysmetabolic syndrome              1   C1559265  Adverse Event Associated with the Gastrointestinal System       0.999999   C0050285                                     A 145            1.0
-C0264315         1  C0264315                         Edema of glottis              1   C1559265  Adverse Event Associated with the Gastrointestinal System       0.999999   C0432923                 Superficial incised wound            1.0
-C1557397         3  C1557397       Adverse Event Associated with Pain              3   C1559265  Adverse Event Associated with the Gastrointestinal System       1.000000   C1299585                                  Does not            1.0
-C1556682         3  C1556682  Adverse Event Associated with Infection              3   C0024117                         Chronic Obstructive Airway Disease       0.068762   C0162800                         Dietary Potassium            1.0
-C0221365         1  C0221365                            Double ureter              1   C0024117                         Chronic Obstructive Airway Disease       0.068852   C1865016                                                      1.0
-Total_Time (1.490312896039751(in Hrs) : 89.41877378622691(in Mins)
