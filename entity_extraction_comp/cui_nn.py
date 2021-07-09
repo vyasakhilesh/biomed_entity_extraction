@@ -78,8 +78,6 @@ embeddings_cui_imp_comb = {key:value for key, value in embeddings_cui.items() if
                       and key in cui_comb_list}
 #embeddings_cui = dict(list(embeddings_cui.items())[0:10])
 
-
-
 def get_canonical_name(cui_id):
     try:
         # return linker.kb.cui_to_entity[cui_id].canonical_name
@@ -122,7 +120,10 @@ def nearest_cui_cs_imp(cui):
 
 def have_same_sem_type(cui1, cui2):
     if cui1 in cui_SEMType_dict and cui2 in cui_SEMType_dict:
-        if len(set(cui_SEMType_dict[cui1]).intersection(set(cui_SEMType_dict[cui2])))>0:
+        l1 = ast.literal_eval(cui_SEMType_dict[cui1])
+        l2 = ast.literal_eval(cui_SEMType_dict[cui2])
+        if len(set(l1).intersection(set(l2)))>0:
+            #print(True, cui_SEMType_dict[cui1], cui_SEMType_dict[cui2])
             return True
     return False
 
@@ -134,7 +135,7 @@ def nearest_cui_cs_all(cui):
         del embeddings_cui_tmp[cui]
         cui_emb = embeddings_cui[cui]
         return max([(cuii,get_cosine(cui_emb, emb)) for cuii, emb in embeddings_cui_tmp.items()\
-                    if have_same_sem_type(cui,cuii)],key=itemgetter(1), default=('',np.nan))
+                    if have_same_sem_type(cui,cuii)], key=itemgetter(1), default=('',np.nan))
         
     else:
         return ('',np.nan)
@@ -176,7 +177,7 @@ def main():
     # df_top_cn['CUI_NN_CN_all'] = df_top_cn['CUI_NN_all'].apply(lambda x : get_canonical_name(x))
     # df_top_cn['CUI_NN_CS_all'] = [j for _,j in cui_nn_cs_all]
     
-    cui_nn_cs_all = df_top_cn['CUI'].apply(lambda x : nearest_cui_cs_all(x))
+    cui_nn_cs_all = df_top_cn['CUI'].apply(lambda x : nearest_cui_cs_all(x)) #nearest_cui_cs_all
     df_top_cn['CUI_NN_all'] = [i for i,_ in cui_nn_cs_all]
     df_top_cn['CUI_NN_CN_all'] = df_top_cn['CUI_NN_all'].apply(lambda x : get_canonical_name(x))
     df_top_cn['CUI_NN_SEM_all'] = df_top_cn['CUI_NN_all'].apply(lambda x : extract_semantic_type(x))
