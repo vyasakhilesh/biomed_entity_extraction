@@ -18,3 +18,7 @@ Mon Jul 12 18:30:18 2021
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
+Traceback (most recent call last):
+  File "misc/tsne_plot.py", line 4, in <module>
+    df = pd.read_csv(path_output+'tsne_cn_emb_0_8.csv')
+NameError: name 'pd' is not defined
