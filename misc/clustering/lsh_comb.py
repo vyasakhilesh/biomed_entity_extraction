@@ -64,8 +64,8 @@ def main():
     lsh = LocalitySensitiveHashing(
                     datafile = datafile,
                     dim = 500,
-                    r = 50,
-                    b = 50,
+                    r = 25,
+                    b = 100,
                     expected_num_of_clusters = expected_num_of_clusters,
             )
     lsh.get_data_from_csv()
