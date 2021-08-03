@@ -52,7 +52,7 @@ def main():
                     = df_pretrained_cui_all.loc[:,columns]"""
     
     # create sample groups
-    expected_num_of_clusters = 150
+    expected_num_of_clusters = 200
     sample_list = ['sample'+str(i//expected_num_of_clusters)+'_'+str(i) \
                     for i in range(df_pretrained_cui_all.shape[0])]
     cui_sample_dict = dict(zip(df_pretrained_cui_all['Unnamed: 0'],sample_list))
@@ -64,8 +64,8 @@ def main():
     lsh = LocalitySensitiveHashing(
                     datafile = datafile,
                     dim = 500,
-                    r = 25,
-                    b = 100,
+                    r = 50,
+                    b = 50,
                     expected_num_of_clusters = expected_num_of_clusters,
             )
     lsh.get_data_from_csv()
