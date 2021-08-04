@@ -1,0 +1,7 @@
+{
+	"folders": [],
+	"settings": {
+		"python.pythonPath": "/nfs/home/vyasa/software/pkg/miniconda3/bin/python",
+		"jupyter.jupyterServerType": "local"
+	}
+}

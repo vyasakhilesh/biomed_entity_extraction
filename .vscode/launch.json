@@ -1,0 +1,24 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: RUN File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "env": {
+                "UMLSFILEPATH": "/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output/",
+              },
+            "args": ["-i", "/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output/", 
+                    "-c", "df_top_cn_CS_sem_all.csv", 
+                    "-o", "/nfs/home/vyasa/projects/proj_off/data_off/clarify/spanish_comorbidity/new/output/", 
+                    "-t", "umls_similarity_sample.txt", 
+                    "-b", "TRUE", 
+                    "-s", "TRUE"],
+        }
+    ]
+}

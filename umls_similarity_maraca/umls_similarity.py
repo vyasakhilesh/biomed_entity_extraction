@@ -14,5 +14,7 @@ class UMLS_SIMILARITY:
 		return self.score
 
 
+
+
 	def __str__():
  		return "umls1: " + umls1 + " , " + "umls2: " + umls2 + " , " + "score: " + score
